@@ -1,0 +1,1 @@
+CREATE INDEX IF NOT EXISTS "txs_estimated_idx" ON "transactions" USING btree ("block_number") WHERE "transactions"."gas_estimate" is not null;

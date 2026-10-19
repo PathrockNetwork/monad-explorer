@@ -1,0 +1,1 @@
+ALTER TABLE "validators" ADD COLUMN "snapshot_commission" double precision;
