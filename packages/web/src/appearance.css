@@ -1,0 +1,13 @@
+/* Applied at the app root, including dialogs and every route. */
+[data-code-size="12"] { --reader-code-size: 12px; }
+[data-code-size="14"] { --reader-code-size: 14px; }
+[data-code-size="16"] { --reader-code-size: 16px; }
+[data-code-size] :is(pre, pre code, .rce-raw-editor, .rce-fields textarea) { font-size: var(--reader-code-size) !important; }
+[data-density="compact"] :is(.vtable,.bx-table,.txe-table,.nwe-table,.validators-table) tbody td { height: auto !important; padding-top: 6px !important; padding-bottom: 6px !important; }
+[data-density="spacious"] :is(.vtable,.bx-table,.txe-table,.nwe-table,.validators-table) tbody td { height: auto !important; padding-top: 20px !important; padding-bottom: 20px !important; }
+[data-density="compact"] :is(.ste-fact,.ste-preference,.ste-indexer-row,.ste-security-row) { padding-block: 7px; }
+[data-density="spacious"] :is(.ste-fact,.ste-preference,.ste-indexer-row,.ste-security-row) { padding-block: 17px; }
+[data-density="compact"] .ste-endpoint-table td { padding-block: 9px; }
+[data-density="spacious"] .ste-endpoint-table td { padding-block: 21px; }
+[data-reduce-motion="true"] *, [data-reduce-motion="true"] *::before, [data-reduce-motion="true"] *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+.explorer-timestamp { overflow-wrap: anywhere; white-space: normal; }

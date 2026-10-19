@@ -1,0 +1,92 @@
+/* Monad visual language on the shared Pathrock explorer layout.
+   Keep the explorer's accessible type scale and semantic data colors. */
+body { background-image: none; }
+.side { background: var(--canvas); }
+.topbar { border-bottom: 1px solid var(--line); margin-bottom: 16px; }
+.page-heading h1 { font-weight: 600; letter-spacing: -.045em; }
+.page-subtitle { line-height: 1.6; }
+.slogan, .secret-explorer-label, .monad-explorer-label { font-family: 'JetBrains Mono Variable', monospace; font-weight: 400; }
+.side nav a.active {
+  background: var(--brandSoft) !important;
+  color: var(--brand2) !important;
+  border-left-color: var(--accent);
+  box-shadow: none;
+}
+.side nav a:hover { background: var(--panel2); }
+.brand-by { color: var(--tx3); }
+.pathrock-card { background: var(--panel); box-shadow: none; }
+.pathrock-card strong { color: var(--tx); }
+.pathrock-orbit {
+  display: block;
+  background: var(--brand);
+  -webkit-mask: url('/pathrock-mark.svg') center / contain no-repeat;
+  mask: url('/pathrock-mark.svg') center / contain no-repeat;
+  filter: none;
+}
+.global-search input { box-shadow: none; background: var(--panel); }
+.global-search input:focus { border-color: var(--brand); }
+.mobile-header { background: var(--canvas); }
+
+/* Flat charcoal/white surfaces, thin outlines, and restrained corner rounding. */
+.overview-page .g5 > div, .overview-page section,
+.g4 > div, .row > section, .validators-table-panel,
+.bx-card, .vstat, .vtable-panel, .vinspector, .vanalytic,
+.rpc-endpoint-panel, .rpc-method-explorer, .rpc-parameters-panel,
+.rpc-response-panel, .rpc-summary-card, .validator-modal {
+  background: var(--panel) !important;
+  border-radius: 10px !important;
+  box-shadow: var(--shadow) !important;
+}
+.overview-page .upgrade-banner { background: var(--cipher) !important; }
+.upgrade-shield, .overview-stat-tile .metric-glyph, .bx-icon,
+.bx-stream-block.selected, .vfilters button[aria-pressed=true],
+.settings-theme-options button.active { box-shadow: none; }
+.metric-glyph-block, .metric-glyph-clock,
+.metric-glyph-validators, .metric-glyph-changes, .metric-glyph-health {
+  color: var(--brand2);
+  background: var(--brandSoft);
+}
+.metric-glyph-signing, .metric-glyph-lag { color: var(--ok); background: var(--okSoft); }
+.vstat-icon svg, .bx-cube, .bx-wire-cube svg { filter: none; }
+.bx-wire-cube { background: none; }
+.bx-cube.tone-2 { color: var(--sealedTx); }
+.bx-live i, .bx-dot, .bx-finalized i { box-shadow: none; }
+.bx-inspector, .vinspector { border-color: var(--line2); }
+.bx-table tr.selected, .vtable tr.selected { outline-color: var(--brand); }
+.bx-stream-block { background: var(--panel2); }
+.bx-stream-block.selected { background: var(--brandSoft); }
+.bx-bar-value b, .bx-histogram > i, .vtop-row b, .vcommission-chart i,
+.summary-proposers b, .upgrade-progress span { background: var(--brand); }
+.enclave-frame { border-color: var(--line2) !important; }
+.enclave-frame::before { display: none; }
+.validator-donut svg { filter: none; }
+
+/* Purple is the action accent; success, warning, and failure keep their labels. */
+.rpc-connect-button, .rpc-execute-button {
+  color: var(--onAccent);
+  background: var(--accent);
+  box-shadow: none;
+}
+.rpc-connect-button:hover, .rpc-execute-button:hover { background: #5b3fe6; }
+.rpc-endpoint-card, .rpc-method-card, .rpc-method-card.view-all,
+.rpc-response-code { background: var(--panel2); }
+.rpc-no-params { background: var(--cipher); color: var(--sealedTx); }
+.rpc-icon-image { filter: none; }
+[data-theme="light"] .rpc-chain-mark { filter: invert(1); }
+.world-map-canvas { background: var(--panel); }
+.world-map-info { background: var(--brandSoft); }
+.world-map-controls, .world-map-distribution, .world-map-offline-note { background: var(--panel); }
+.cipher-texture { background-image: none; }
+
+@media (max-width: 920px) {
+  .topbar { margin-bottom: 8px; }
+}
+
+/* Monad lockup: hexagon mark + chain name, sized to the Secret wordmark slot. */
+.monad-wordmark { display: inline-flex; align-items: center; gap: 10px; color: var(--tx); }
+.monad-wordmark svg { width: 38px; height: 38px; flex: none; fill: none; stroke: var(--brand); stroke-width: 2.4; stroke-linejoin: round; }
+.monad-wordmark svg circle { fill: var(--brand); stroke: none; }
+.monad-wordmark > span { font: 700 34px/1 'Inter Variable', Inter, system-ui, sans-serif; letter-spacing: -0.04em; }
+.secret-brand-lockup .secret-explorer-label { margin-left: 48px; }
+.mobile-header-brand .monad-wordmark svg { width: 26px; height: 26px; }
+.mobile-header-brand .monad-wordmark > span { font-size: 22px; }
