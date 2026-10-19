@@ -1,0 +1,27 @@
+[Unit]
+Description=Monad Explorer API + web
+After=network-online.target postgresql.service
+Wants=network-online.target
+# Keep retrying rather than hitting the default start-limit and giving up.
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+WorkingDirectory=/root/monad-explorer/packages/api
+EnvironmentFile=/root/monad-explorer/.env
+# Node comes from nvm on this host; adjust if Node is installed elsewhere.
+Environment=PATH=/root/.nvm/versions/node/v24.21.0/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/root/monad-explorer/packages/api/node_modules/.bin/tsx src/server.ts
+Restart=always
+RestartSec=5
+# Hardening: the API needs no privileges and no writable filesystem.
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=read-only
+PrivateTmp=true
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=monad-api
+
+[Install]
+WantedBy=multi-user.target

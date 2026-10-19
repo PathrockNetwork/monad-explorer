@@ -1,0 +1,26 @@
+[Unit]
+Description=Monad Explorer indexer
+After=network-online.target postgresql.service
+Wants=network-online.target
+# Keep retrying rather than hitting the default start-limit and giving up.
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+WorkingDirectory=/root/monad-explorer/packages/indexer
+EnvironmentFile=/root/monad-explorer/.env
+# Node comes from nvm on this host; adjust if Node is installed elsewhere.
+Environment=PATH=/root/.nvm/versions/node/v24.21.0/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/root/monad-explorer/packages/indexer/node_modules/.bin/tsx src/index.ts
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=read-only
+PrivateTmp=true
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=monad-indexer
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,23 @@
+# Monad Explorer on a bare IP + port (no domain, so plain HTTP: browsers will
+# not get a TLS certificate for an IP). Installed as /etc/caddy/monad.caddy and
+# pulled in by an `import monad.caddy` line in /etc/caddy/Caddyfile.
+# When a domain exists, replace ":8080" with the hostname and Caddy will
+# obtain a certificate automatically.
+:8080 {
+	encode zstd gzip
+
+	header -Server
+
+	# The API is read-only; refuse anything that is not a read.
+	@write not method GET HEAD OPTIONS
+	respond @write "read-only" 405
+
+	reverse_proxy 127.0.0.1:3001
+
+	log {
+		output file /var/log/caddy/monad.access.log {
+			roll_size 50MiB
+			roll_keep 5
+		}
+	}
+}
